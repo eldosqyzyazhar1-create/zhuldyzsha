@@ -1,2 +1,1298 @@
 # zhuldyzsha
 a platform for children with disabilities with many Kazakh stories.
+<!DOCTYPE html>
+<html lang="kk" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Star — Жұлдызша | Қазақша аудиокітаптар</title>
+<!-- Skip link for screen readers -->
+<style>
+.skip-link{position:absolute;left:-9999px;top:0;z-index:9999;padding:12px 20px;background:#1E2B6B;color:#fff;font-size:16px;border-radius:0 0 8px 0;font-weight:700;}
+.skip-link:focus{left:0;}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+/* ══ FOCUS — highly visible for screen reader / keyboard users ══ */
+:focus-visible{outline:3px solid #E8A820 !important;outline-offset:3px !important;}
+
+:root{
+  --navy:#1E2B6B; --navy2:#2A3A8A; --navy3:#151F52;
+  --gold:#E8A820; --gold2:#F5C842; --gold-pale:#FBF0D0; --gold-border:#E8A820;
+  --silver:#C8CDE0; --silver2:#ECEEF5;
+  --bg:#F6F6F8; --bg2:#ECEEF5; --bg3:#E2E4EF;
+  --tx:#111827; --tx2:#4A5568; --tx3:#9AA3B8;
+  --white:#FFFFFF;
+  --bdr:rgba(30,43,107,0.12); --bdr2:rgba(30,43,107,0.25);
+  --shadow:0 2px 6px rgba(30,43,107,0.10),0 0 0 1px rgba(30,43,107,0.07);
+  --shadow-lg:0 8px 24px rgba(30,43,107,0.15),0 0 0 1px rgba(30,43,107,0.08);
+  --r:10px; --rl:16px; --rxl:22px;
+  --font:'Inter',system-ui,sans-serif;
+  /* Accessibility sizing — bumped for low vision */
+  --touch:56px;  /* minimum touch target */
+  --fs-body:18px;
+  --fs-sm:15px;
+  --fs-xs:13px;
+}
+
+/* HIGH CONTRAST mode */
+body.hc{
+  --navy:#000080; --navy2:#0000AA; --navy3:#000060;
+  --gold:#FFD700; --gold-pale:#FFF9C4;
+  --bg:#FFFFFF; --bg2:#F0F0F0; --bg3:#DDDDDD;
+  --tx:#000000; --tx2:#222222; --tx3:#555555;
+  --bdr:rgba(0,0,0,0.4); --bdr2:rgba(0,0,0,0.7);
+}
+
+/* NIGHT mode */
+body.night{
+  --bg:#0D1120; --bg2:#141929; --bg3:#1C2238;
+  --white:#141929;
+  --tx:#EEF0F8; --tx2:#8A94B0; --tx3:#4A5270;
+  --bdr:rgba(200,205,224,0.10); --bdr2:rgba(200,205,224,0.22);
+  --silver2:#1C2238; --gold-pale:#2A2010;
+}
+
+/* BIG TEXT mode */
+body.bigtext{--fs-body:22px;--fs-sm:19px;--fs-xs:17px;}
+body.bigtext .stitle{font-size:22px !important;}
+body.bigtext .sbody{font-size:22px !important;}
+
+html,body{font-family:var(--font);background:var(--bg);color:var(--tx);min-height:100vh;transition:background .25s,color .25s;}
+
+/* ══ VOICE STATUS BAR ══ */
+#voiceBar{display:none;position:fixed;top:0;left:0;right:0;z-index:400;background:var(--navy);color:var(--gold);padding:10px 20px;font-size:15px;font-weight:600;text-align:center;align-items:center;justify-content:center;gap:10px;}
+#voiceBar.active{display:flex;}
+.vbar-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);animation:blink 1s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* ══ HEADER ══ */
+.hdr{background:var(--navy);position:sticky;top:0;z-index:300;}
+.hdr-in{max-width:1040px;margin:0 auto;padding:0 1.25rem;height:64px;display:flex;align-items:center;gap:10px;}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none;flex-shrink:0;padding:4px;border-radius:var(--r);}
+.logo-img{width:44px;height:44px;flex-shrink:0;}
+.logo-name{font-size:15px;font-weight:800;color:#fff;letter-spacing:.04em;}
+.logo-kz{font-size:10px;color:var(--gold);letter-spacing:.07em;text-transform:uppercase;font-weight:600;}
+.nav{display:flex;gap:2px;flex:1;justify-content:center;}
+.nb{min-height:var(--touch);background:transparent;border:none;padding:0 12px;font-size:var(--fs-xs);cursor:pointer;color:rgba(255,255,255,0.65);border-radius:var(--r);font-family:var(--font);font-weight:500;transition:all .15s;display:flex;align-items:center;gap:5px;white-space:nowrap;}
+.nb:hover{background:rgba(255,255,255,0.12);color:#fff;}
+.nb.active{background:var(--gold);color:var(--navy3);font-weight:700;}
+.hdr-r{display:flex;gap:6px;align-items:center;margin-left:auto;}
+
+/* Accessibility toolbar buttons in header */
+.acc-btn{min-height:var(--touch);min-width:var(--touch);border-radius:var(--r);border:1.5px solid rgba(255,255,255,0.25);background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(255,255,255,0.75);font-size:10px;font-weight:600;padding:4px 6px;gap:2px;font-family:var(--font);transition:all .15s;letter-spacing:.03em;}
+.acc-btn:hover{background:rgba(255,255,255,0.14);color:#fff;}
+.acc-btn.active{background:var(--gold);color:var(--navy3);border-color:var(--gold);}
+.acc-btn i{font-size:17px;}
+.upill{display:flex;align-items:center;gap:6px;padding:6px 12px 6px 5px;border-radius:99px;background:var(--gold);cursor:pointer;font-size:13px;color:var(--navy3);font-weight:700;min-height:40px;}
+.uav{width:28px;height:28px;border-radius:50%;background:var(--navy3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:800;}
+.ibtn{min-height:40px;min-width:40px;border-radius:var(--r);border:1.5px solid rgba(255,255,255,0.25);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);font-size:16px;padding:0 10px;font-family:var(--font);font-size:12px;font-weight:600;gap:5px;transition:all .15s;}
+.ibtn:hover{background:rgba(255,255,255,0.12);color:#fff;}
+
+/* ══ ARIA LIVE REGION ══ */
+#liveRegion{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+
+/* ══ MAIN ══ */
+.main{max-width:1040px;margin:0 auto;padding:2rem 1.25rem;}
+.tab{display:none;}.tab.active{display:block;}
+
+/* ══ OVERLAY ══ */
+.overlay{position:fixed;inset:0;background:rgba(14,18,37,.65);z-index:500;display:flex;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(6px);}
+.overlay.hidden{display:none;}
+.modal{background:var(--white);border-radius:var(--rxl);padding:2rem;width:100%;max-width:440px;box-shadow:var(--shadow-lg);position:relative;border-top:4px solid var(--navy);}
+.modal-close{position:absolute;top:1rem;right:1rem;background:var(--bg2);border:none;border-radius:var(--r);width:40px;height:40px;cursor:pointer;color:var(--tx2);font-size:18px;display:flex;align-items:center;justify-content:center;font-weight:700;}
+.modal h2{font-size:20px;font-weight:800;margin-bottom:4px;color:var(--navy);}
+.modal-sub{font-size:var(--fs-sm);color:var(--tx2);margin-bottom:1.5rem;}
+.tabs-sm{display:flex;gap:3px;margin-bottom:1.5rem;background:var(--bg2);padding:3px;border-radius:var(--r);}
+.tsm{flex:1;padding:8px;border:none;border-radius:8px;background:transparent;cursor:pointer;font-size:14px;font-family:var(--font);color:var(--tx2);font-weight:600;min-height:40px;}
+.tsm.active{background:var(--navy);color:#fff;}
+.fg{margin-bottom:1rem;}
+.fg label{display:block;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;}
+.fg input,.fg select,.fg textarea{width:100%;padding:11px 13px;border:2px solid var(--bdr2);border-radius:var(--r);background:var(--bg);color:var(--tx);font-family:var(--font);font-size:16px;outline:none;transition:border-color .15s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--navy);}
+.fg textarea{resize:vertical;min-height:100px;}
+.ferr{font-size:13px;color:#C0392B;margin-top:6px;display:none;font-weight:600;}
+.fok{font-size:14px;color:var(--navy);background:var(--gold-pale);border:2px solid var(--gold);border-radius:var(--r);padding:10px 14px;margin-bottom:1rem;display:none;font-weight:600;}
+.btn-modal{width:100%;padding:13px;background:var(--navy);color:white;border:none;border-radius:var(--r);font-size:16px;cursor:pointer;font-family:var(--font);font-weight:700;transition:all .15s;min-height:var(--touch);}
+.btn-modal:hover{background:var(--navy2);}
+.btn-ghost{background:transparent;border:none;font-size:14px;color:var(--navy);cursor:pointer;font-family:var(--font);margin-top:.75rem;text-align:center;width:100%;display:block;padding:6px;font-weight:600;}
+
+/* ══ HERO ══ */
+.hero{padding:2.5rem 0 1.75rem;text-align:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--navy);background:var(--gold-pale);border:2px solid var(--gold);padding:5px 14px;border-radius:99px;margin-bottom:1.25rem;letter-spacing:.06em;text-transform:uppercase;}
+.hero h1{font-size:30px;font-weight:800;letter-spacing:-.03em;margin-bottom:.75rem;line-height:1.2;color:var(--navy);}
+.hero p{font-size:var(--fs-body);color:var(--tx2);max-width:520px;margin:0 auto 1.5rem;line-height:1.7;}
+.search-bar{display:flex;max-width:460px;margin:0 auto;background:var(--white);border:2.5px solid var(--navy);border-radius:var(--rl);overflow:hidden;box-shadow:var(--shadow-lg);}
+.search-bar input{flex:1;border:none;padding:12px 16px;font-size:var(--fs-body);background:transparent;color:var(--tx);outline:none;font-family:var(--font);}
+.search-bar button{background:var(--navy);border:none;color:white;padding:0 20px;cursor:pointer;font-size:20px;display:flex;align-items:center;min-height:var(--touch);}
+
+/* ══ SECTION LABEL ══ */
+.slbl{font-size:12px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.8rem;display:flex;align-items:center;gap:8px;}
+.slbl::after{content:'';flex:1;height:2px;background:var(--bdr2);border-radius:1px;}
+
+/* ══ CATEGORIES ══ */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:2rem;}
+.cat{background:var(--white);border:2.5px solid var(--bdr);border-radius:var(--rl);padding:1.1rem .75rem;cursor:pointer;text-align:center;transition:all .15s;box-shadow:var(--shadow);min-height:var(--touch);}
+.cat:hover,.cat:focus-visible{border-color:var(--navy);}
+.cat.active{border-color:var(--navy);background:var(--silver2);}
+.cico{font-size:28px;margin-bottom:6px;}
+.cnm{font-size:13px;font-weight:700;color:var(--tx);}
+.cct{font-size:12px;color:var(--tx2);margin-top:2px;font-weight:500;}
+
+/* ══ BIG PLAY BUTTON STORY CARD ══ */
+.scard{background:var(--white);border:2px solid var(--bdr);border-radius:var(--rl);overflow:hidden;margin-bottom:1.5rem;box-shadow:var(--shadow);}
+.scard-hd{padding:1.25rem 1.5rem 1rem;border-bottom:2px solid var(--bdr);}
+.smeta{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+.stag{font-size:12px;padding:3px 10px;border-radius:99px;background:var(--gold-pale);color:var(--navy);font-weight:700;border:1.5px solid var(--gold);}
+.stag-p{background:var(--silver2);color:var(--navy2);border-color:var(--silver);}
+.narbdg{font-size:var(--fs-sm);color:var(--tx2);display:flex;align-items:center;gap:4px;font-weight:500;}
+.stitle{font-size:20px;font-weight:800;line-height:1.3;letter-spacing:-.02em;color:var(--navy);}
+.ssub{font-size:var(--fs-sm);color:var(--tx2);margin-top:4px;font-weight:500;}
+
+/* ══ BIG AUDIO PLAYER ══ */
+.aplayer{padding:1.1rem 1.5rem;background:var(--silver2);border-bottom:2px solid var(--bdr);}
+.voice-sel-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.voice-sel-row label{font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;}
+.voice-sel{padding:6px 10px;border:2px solid var(--bdr2);border-radius:var(--r);background:var(--bg);color:var(--tx);font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;outline:none;}
+.voice-sel:focus{border-color:var(--navy);}
+.voice-badge{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:700;background:var(--gold-pale);color:var(--navy);border:1.5px solid var(--gold);}
+.prow{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+/* BIG accessible play button */
+.big-play{width:64px;height:64px;border-radius:50%;background:var(--navy);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;box-shadow:0 4px 12px rgba(30,43,107,.35);}
+.big-play:hover{background:var(--navy2);transform:scale(1.05);}
+.big-play:focus-visible{outline:3px solid var(--gold) !important;outline-offset:4px !important;}
+.big-play svg{fill:white;width:22px;height:22px;margin-left:3px;}
+.big-play.playing svg{margin-left:0;}
+.pbar-wrap{flex:1;display:flex;flex-direction:column;gap:5px;}
+.pbar{height:10px;background:var(--bg3);border-radius:5px;cursor:pointer;position:relative;border-radius:5px;}
+.pfill{height:100%;background:var(--navy);border-radius:5px;pointer-events:none;transition:width .12s linear;}
+.pbar-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--tx2);font-weight:600;font-variant-numeric:tabular-nums;}
+.sprow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.spb{font-size:13px;padding:6px 12px;border-radius:var(--r);border:2px solid var(--bdr2);background:transparent;cursor:pointer;color:var(--tx2);font-family:var(--font);font-weight:700;min-height:38px;transition:all .15s;}
+.spb:hover{border-color:var(--navy);color:var(--navy);}
+.spb.active{background:var(--navy);color:white;border-color:var(--navy);}
+
+/* ══ STORY BODY ══ */
+.sbody{padding:1.5rem;line-height:2;font-size:var(--fs-body);color:var(--tx);}
+.sbody p{margin-bottom:1rem;}
+.hl{background:var(--gold-pale);border-radius:4px;padding:0 4px;color:var(--navy);font-weight:600;}
+/* Highlighted sentence during TTS playback */
+.sentence-active{background:var(--gold-pale) !important;border-radius:4px;outline:2px solid var(--gold);transition:background .2s;}
+.moral{background:var(--gold-pale);border-left:4px solid var(--gold);border-radius:0 var(--r) var(--r) 0;padding:1rem 1.1rem;margin-top:1.25rem;font-size:var(--fs-body);color:var(--navy);font-weight:700;display:flex;align-items:flex-start;gap:8px;}
+
+/* Audio description panel */
+.desc-panel{background:var(--navy);color:#fff;padding:1rem 1.5rem;font-size:var(--fs-sm);line-height:1.7;border-left:4px solid var(--gold);}
+.desc-panel strong{color:var(--gold);}
+
+/* ══ VOICE COMMAND PANEL ══ */
+.vc-panel{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);border-radius:var(--rl);padding:1.5rem;margin-bottom:1.5rem;color:#fff;}
+.vc-title{font-size:16px;font-weight:800;margin-bottom:.5rem;display:flex;align-items:center;gap:8px;color:#fff;}
+.vc-title i{color:var(--gold);font-size:20px;}
+.vc-desc{font-size:var(--fs-sm);color:rgba(255,255,255,.75);margin-bottom:1.25rem;line-height:1.6;}
+.vc-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.25rem;}
+.vc-chip{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);border-radius:99px;padding:5px 14px;font-size:13px;color:#fff;font-weight:600;display:flex;align-items:center;gap:6px;}
+.vc-chip i{color:var(--gold);font-size:13px;}
+.vc-chip span{color:var(--gold);}
+.big-mic-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;background:var(--gold);color:var(--navy3);border:none;border-radius:var(--rl);font-size:16px;font-weight:800;cursor:pointer;font-family:var(--font);transition:opacity .15s;min-height:var(--touch);}
+.big-mic-btn:hover{opacity:.88;}
+.big-mic-btn i{font-size:22px;}
+.big-mic-btn.listening{background:rgba(255,255,255,.15);color:#fff;border:2px solid var(--gold);}
+
+/* ══ STORY LIST ══ */
+.slist{display:flex;flex-direction:column;gap:9px;}
+.sli{background:var(--white);border:2px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.2rem;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .15s;box-shadow:var(--shadow);min-height:var(--touch);}
+.sli:hover,.sli:focus-visible{border-color:var(--navy);box-shadow:var(--shadow-lg);}
+.sthumb{width:52px;height:52px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.si-t{font-size:16px;font-weight:700;color:var(--navy);}
+.si-m{font-size:var(--fs-sm);color:var(--tx2);margin-top:3px;font-weight:500;}
+.coming{font-size:12px;padding:3px 10px;border-radius:99px;background:var(--bg2);color:var(--tx3);font-weight:600;}
+
+/* ══ ADD STORY ══ */
+.add-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);border-radius:var(--rl);padding:1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.add-ico{width:52px;height:52px;border-radius:var(--rl);background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.add-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;}
+.add-desc{font-size:var(--fs-sm);color:rgba(255,255,255,.75);}
+.btn-gold{padding:12px 22px;background:var(--gold);color:var(--navy3);border:none;border-radius:var(--r);font-size:15px;cursor:pointer;font-family:var(--font);font-weight:800;white-space:nowrap;min-height:var(--touch);display:flex;align-items:center;gap:6px;}
+.btn-gold:hover{opacity:.9;}
+.audio-drop{border:2.5px dashed var(--silver);border-radius:var(--r);padding:2rem;text-align:center;cursor:pointer;transition:border-color .15s;background:var(--bg);}
+.audio-drop:hover{border-color:var(--navy);}
+.audio-drop i{font-size:32px;color:var(--tx3);margin-bottom:8px;display:block;}
+.audio-drop p{font-size:15px;color:var(--tx2);margin:0;font-weight:500;}
+.audio-drop small{font-size:13px;color:var(--tx3);}
+.audio-drop input[type=file]{display:none;}
+.preview-aud{background:var(--gold-pale);border:2px solid var(--gold);border-radius:var(--r);padding:12px;display:flex;align-items:center;gap:10px;margin-top:8px;}
+.preview-aud audio{flex:1;height:36px;}
+.preview-aud button{background:transparent;border:none;color:#C0392B;cursor:pointer;font-size:18px;min-width:36px;min-height:36px;}
+.usc-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 9px;border-radius:99px;background:var(--gold-pale);color:var(--navy);font-weight:700;border:1.5px solid var(--gold);margin-left:6px;}
+.char-count{font-size:12px;color:var(--tx3);text-align:right;margin-top:4px;font-weight:600;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.form-actions{display:flex;gap:10px;margin-top:1.25rem;}
+.btn-outline{padding:11px 22px;background:transparent;color:var(--tx2);border:2px solid var(--bdr2);border-radius:var(--r);font-size:14px;cursor:pointer;font-family:var(--font);font-weight:600;min-height:var(--touch);}
+.btn-navy{padding:11px 26px;background:var(--navy);color:white;border:none;border-radius:var(--r);font-size:14px;cursor:pointer;font-family:var(--font);font-weight:700;min-height:var(--touch);}
+.btn-navy:hover{background:var(--navy2);}
+
+/* ══ RESOURCES ══ */
+.resgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:1.25rem;}
+.rcard{background:var(--white);border:2px solid var(--bdr);border-radius:var(--rl);padding:1.1rem;box-shadow:var(--shadow);}
+.rico{font-size:24px;margin-bottom:8px;}
+.rtit{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--navy);}
+.rdesc{font-size:var(--fs-sm);color:var(--tx2);line-height:1.5;}
+.rlink{display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--navy);margin-top:10px;cursor:pointer;background:none;border:none;font-family:var(--font);padding:0;font-weight:700;min-height:36px;}
+
+/* ══ VOLUNTEER ══ */
+.volbanner{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--rl);padding:1.25rem;display:flex;align-items:center;gap:14px;margin-bottom:1.5rem;flex-wrap:wrap;}
+.volico{width:46px;height:46px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:var(--navy3);font-size:21px;flex-shrink:0;}
+.vtxt{flex:1;min-width:120px;}
+.vt{font-size:14px;font-weight:800;color:#fff;}
+.vd{font-size:var(--fs-sm);color:rgba(255,255,255,.72);margin-top:2px;}
+.btn-vol{padding:10px 20px;background:var(--gold);color:var(--navy3);border:none;border-radius:var(--r);font-size:13px;cursor:pointer;font-family:var(--font);font-weight:800;min-height:var(--touch);display:flex;align-items:center;}
+.narcard{background:var(--white);border:2px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.2rem;display:flex;align-items:center;gap:12px;margin-bottom:8px;box-shadow:var(--shadow);}
+.av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;}
+.av-n{background:var(--navy);color:var(--gold);}
+.av-g{background:var(--gold-pale);color:var(--navy);border:2px solid var(--gold);}
+.nname{font-size:15px;font-weight:700;color:var(--navy);}
+.nmeta{font-size:var(--fs-sm);color:var(--tx2);margin-top:2px;font-weight:500;}
+
+/* ══ STATS ══ */
+.stats-hdr{text-align:center;padding:2rem 0 1.5rem;}
+.stats-hdr h1{font-size:24px;font-weight:800;margin-bottom:8px;color:var(--navy);}
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:3px 11px;border-radius:99px;background:var(--gold-pale);color:var(--navy);border:2px solid var(--gold);margin-left:8px;vertical-align:middle;font-weight:700;}
+.ldot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;margin-bottom:2rem;}
+.stat-card{background:var(--white);border:2px solid var(--bdr);border-radius:var(--rl);padding:1.2rem;box-shadow:var(--shadow);}
+.s-ico{font-size:22px;margin-bottom:8px;}
+.s-val{font-size:30px;font-weight:800;line-height:1;margin-bottom:4px;color:var(--navy);}
+.s-lbl{font-size:12px;color:var(--tx2);line-height:1.4;font-weight:600;}
+.s-ch{font-size:12px;margin-top:6px;display:flex;align-items:center;gap:3px;font-weight:600;color:var(--tx3);}
+.s-up{color:var(--navy);}
+.chart-box{background:var(--white);border:2px solid var(--bdr);border-radius:var(--rl);padding:1.4rem;margin-bottom:1rem;box-shadow:var(--shadow);}
+.chart-tit{font-size:14px;font-weight:800;margin-bottom:1.1rem;color:var(--navy);}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.bar-lbl{font-size:12px;color:var(--tx2);width:128px;flex-shrink:0;text-align:right;font-weight:600;}
+.bar-tr{flex:1;height:10px;background:var(--bg2);border-radius:5px;overflow:hidden;}
+.bar-f{height:100%;border-radius:5px;transition:width 1.1s cubic-bezier(.22,1,.36,1);}
+.bar-n{font-size:12px;color:var(--tx2);width:38px;flex-shrink:0;font-weight:700;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+.act-list{display:flex;flex-direction:column;gap:6px;}
+.act-row{display:flex;align-items:center;gap:10px;padding:.65rem 1rem;background:var(--bg2);border-radius:var(--r);}
+.adot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.atxt{font-size:13px;color:var(--tx);flex:1;font-weight:600;}
+.atime{font-size:12px;color:var(--tx3);font-weight:500;}
+
+/* ══ FOOTER ══ */
+.footer{background:var(--navy);padding:1.75rem;text-align:center;margin-top:3rem;}
+.footer p{font-size:13px;color:rgba(255,255,255,.5);font-weight:500;}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:680px){
+  .nav{display:none;}
+  .hero h1{font-size:24px;}
+  .main{padding:1rem;}
+  .two-col{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .hdr-in{padding:0 .75rem;}
+  .big-play{width:56px;height:56px;}
+}
+
+/* ══ TOOLBAR ROW ══ */
+.toolbar{display:flex;align-items:center;gap:7px;margin-bottom:1.25rem;flex-wrap:wrap;padding:10px 14px;background:var(--white);border:2px solid var(--bdr);border-radius:var(--rl);box-shadow:var(--shadow);}
+.tlbl{font-size:12px;color:var(--tx2);font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+.div1{width:1.5px;height:22px;background:var(--bdr2);border-radius:1px;}
+.mdb{padding:7px 13px;border-radius:var(--r);border:2px solid var(--bdr);background:transparent;cursor:pointer;font-size:13px;color:var(--tx2);font-family:var(--font);display:flex;align-items:center;gap:5px;font-weight:600;min-height:40px;}
+.mdb:hover{background:var(--bg2);}
+.mdb.active{background:var(--navy);color:white;border-color:var(--navy);}
+</style>
+</head>
+<body>
+
+<!-- Skip navigation -->
+<a href="#mainContent" class="skip-link">Негізгі мазмұнға өту</a>
+
+<!-- ARIA Live region for screen reader announcements -->
+<div id="liveRegion" aria-live="assertive" aria-atomic="true" role="status"></div>
+
+<!-- Voice status bar -->
+<div id="voiceBar" role="status" aria-live="polite">
+  <span class="vbar-dot"></span>
+  <span id="voiceStatus">Дауыс командасын тыңдап тұрмын...</span>
+</div>
+
+<!-- ══════════ AUTH MODAL ══════════ -->
+<div class="overlay hidden" id="authOverlay" role="dialog" aria-modal="true" aria-labelledby="authHeading">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAuth()" aria-label="Жабу"><i class="ti ti-x" aria-hidden="true"></i></button>
+    <div id="pLogin">
+      <h2 id="authHeading">Қош келдіңіз 👋</h2>
+      <p class="modal-sub">Little Star платформасына кіріңіз</p>
+      <div class="fok" id="regOk" role="alert">✓ Тіркелу сәтті! Енді кіріңіз.</div>
+      <div class="tabs-sm" role="tablist">
+        <button class="tsm active" role="tab" aria-selected="true" onclick="switchAuth('pLogin',this,0)">Кіру</button>
+        <button class="tsm" role="tab" aria-selected="false" onclick="switchAuth('pRegister',this,1)">Тіркелу</button>
+      </div>
+      <div class="fg"><label for="lEmail">Email</label><input id="lEmail" type="email" placeholder="email@example.com" autocomplete="username" aria-required="true"></div>
+      <div class="fg"><label for="lPass">Құпия сөз</label><input id="lPass" type="password" placeholder="••••••••" autocomplete="current-password" aria-required="true"><div class="ferr" id="lErr" role="alert">Email немесе құпия сөз қате</div></div>
+      <button class="btn-modal" onclick="doLogin()">Кіру</button>
+      <button class="btn-ghost" onclick="switchAuth('pRegister',document.querySelectorAll('.tsm')[1],1)">Тіркелгі жоқ па? Тіркелу →</button>
+    </div>
+    <div id="pRegister" style="display:none">
+      <h2>Тіркелу ⭐</h2>
+      <p class="modal-sub">Тегін тіркелгі жасаңыз</p>
+      <div class="tabs-sm" role="tablist">
+        <button class="tsm" role="tab" onclick="switchAuth('pLogin',this,0)">Кіру</button>
+        <button class="tsm active" role="tab" aria-selected="true" onclick="switchAuth('pRegister',this,1)">Тіркелу</button>
+      </div>
+      <div class="fg"><label for="rName">Аты-жөн</label><input id="rName" type="text" placeholder="Айгүл Сейтқали" aria-required="true"></div>
+      <div class="fg"><label for="rEmail">Email</label><input id="rEmail" type="email" placeholder="email@example.com" aria-required="true"></div>
+      <div class="fg"><label for="rRole">Рөл</label>
+        <select id="rRole"><option value="reader">Оқырман</option><option value="student">Студент</option><option value="teacher">Мұғалім</option><option value="parent">Ата-ана</option><option value="narrator">Диктор болғым келеді</option></select>
+      </div>
+      <div class="fg"><label for="rPass">Құпия сөз</label><input id="rPass" type="password" placeholder="Кем дегенде 6 таңба" autocomplete="new-password" aria-required="true"><div class="ferr" id="rErr" role="alert">Барлық өрісті дұрыс толтырыңыз</div></div>
+      <button class="btn-modal" onclick="doRegister()">Тіркелу</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ ADD STORY MODAL ══════════ -->
+<div class="overlay hidden" id="storyOverlay" role="dialog" aria-modal="true" aria-labelledby="storyHeading">
+  <div class="modal" style="max-width:580px;max-height:90vh;overflow-y:auto;border-top-color:var(--gold);">
+    <button class="modal-close" onclick="document.getElementById('storyOverlay').classList.add('hidden')" aria-label="Жабу"><i class="ti ti-x" aria-hidden="true"></i></button>
+    <h2 id="storyHeading">Әңгіме қосу ✍️</h2>
+    <p class="modal-sub">Өз әңгімеңізді Little Star платформасына жүктеңіз</p>
+    <div class="fok" id="storyOk" role="alert">⭐ Әңгімеңіз сәтті жүктелді! Тексеруден өткен соң жарияланады.</div>
+    <div class="fg"><label for="sTitle">Әңгіме атауы</label><input id="sTitle" type="text" placeholder="Мысалы: Алтын балық туралы ертегі" aria-required="true"></div>
+    <div class="form-row">
+      <div class="fg"><label for="sCat">Санат</label>
+        <select id="sCat"><option value="fairy">Ертегілер</option><option value="folklore">Қазақ фольклоры</option><option value="edu">Оқу әңгімелері</option><option value="kids">Балалар үшін</option><option value="school">Мектеп әдебиеті</option></select>
+      </div>
+      <div class="fg"><label for="sAge">Жас шамасы</label>
+        <select id="sAge"><option value="3-6">3–6 жас</option><option value="6-9">6–9 жас</option><option value="9-12">9–12 жас</option><option value="12+">12+ жас</option></select>
+      </div>
+    </div>
+    <div class="fg"><label for="sText">Мәтін</label><textarea id="sText" rows="6" placeholder="Ертеде бір заманда..." oninput="upCC()" aria-required="true"></textarea><div class="char-count" id="charCount" aria-live="polite">0 таңба</div></div>
+    <div class="fg">
+      <label>Аудио жазба (міндетті емес)</label>
+      <div class="audio-drop" id="audioDrop" onclick="document.getElementById('audioFile').click()" role="button" tabindex="0" aria-label="Аудио файл жүктеу">
+        <i class="ti ti-microphone-2" aria-hidden="true"></i>
+        <p>MP3 немесе WAV файлын таңдаңыз</p>
+        <small>немесе осы жерге сүйреп апарыңыз · мак 50 МБ</small>
+        <input type="file" id="audioFile" accept="audio/*" onchange="handleAudio(event)" aria-label="Аудио файл таңдау">
+      </div>
+      <div class="preview-aud" id="audPrev" style="display:none">
+        <i class="ti ti-music" style="color:var(--navy);font-size:20px;flex-shrink:0;" aria-hidden="true"></i>
+        <audio id="uploadedAudio" controls style="flex:1;height:36px;" aria-label="Жүктелген аудио алдын ала тыңдау"></audio>
+        <button onclick="clearAudio()" aria-label="Аудио файлды өшіру"><i class="ti ti-trash" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="fg"><label for="sAuthor">Автор аты</label><input id="sAuthor" type="text" placeholder="Мысалы: Нұрай Бекова, мұғалім"></div>
+    <div class="fg"><label for="sMoral">Моральдік тұжырым (міндетті емес)</label><input id="sMoral" type="text" placeholder="Мысалы: Достық — ең үлкен байлық."></div>
+    <div class="form-actions">
+      <button class="btn-outline" onclick="document.getElementById('storyOverlay').classList.add('hidden')">Болдырмау</button>
+      <button class="btn-navy" onclick="submitStory()"><i class="ti ti-send" style="font-size:14px;" aria-hidden="true"></i> Жіберу</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="hdr" role="banner">
+  <div class="hdr-in">
+    <div class="logo" onclick="switchTab('library',document.querySelectorAll('.nb')[0])" role="link" tabindex="0" aria-label="Little Star — Басты бет">
+      <svg class="logo-img" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="40" cy="38" r="18" fill="#E8A820" opacity="0.9"/>
+        <path d="M8 52 Q40 42 72 52 L68 62 Q40 54 12 62 Z" fill="rgba(255,255,255,0.15)"/>
+        <path d="M8 52 Q40 44 72 52" stroke="white" stroke-width="2.5" fill="none"/>
+        <path d="M12 52 L8 62" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <path d="M68 52 L72 62" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <path d="M40 44 L40 63" stroke="white" stroke-width="1.5"/>
+        <path d="M8 52 Q24 46 40 44 L40 63 Q24 60 12 62 Z" fill="rgba(255,255,255,0.5)"/>
+        <path d="M72 52 Q56 46 40 44 L40 63 Q56 60 68 62 Z" fill="rgba(255,255,255,0.7)"/>
+        <path d="M8 52 Q40 42 72 52 L68 62 Q40 54 12 62 Z" stroke="white" stroke-width="1.5" fill="none"/>
+        <ellipse cx="27" cy="34" rx="4" ry="4" fill="white"/>
+        <path d="M27 38 Q23 46 24 50 Q25 52 27 50 Q28 48 28 46 L29 50 Q30 52 32 50 Q33 48 29 38 Z" fill="white"/>
+        <path d="M24 41 Q19 44 20 47" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M30 41 Q34 43 34 42" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="53" cy="34" rx="4" ry="4" fill="white"/>
+        <path d="M53 38 Q49 46 50 50 Q51 52 53 50 Q54 48 54 46 L55 50 Q56 52 58 50 Q59 48 55 38 Z" fill="white"/>
+        <path d="M56 41 Q61 44 60 47" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M50 41 Q46 43 46 42" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <polygon points="40,14 41.5,19 47,19 42.5,22 44,27 40,24 36,27 37.5,22 33,19 38.5,19" fill="#E8A820"/>
+        <line x1="40" y1="44" x2="35" y2="52" stroke="white" stroke-width="1.3" opacity="0.8"/>
+        <line x1="40" y1="44" x2="40" y2="53" stroke="white" stroke-width="1.3" opacity="0.8"/>
+        <line x1="40" y1="44" x2="45" y2="52" stroke="white" stroke-width="1.3" opacity="0.8"/>
+      </svg>
+      <div class="logo-txt">
+        <div class="logo-name">LITTLE STAR</div>
+        <div class="logo-kz">Жұлдызша</div>
+      </div>
+    </div>
+
+    <nav class="nav" role="navigation" aria-label="Негізгі навигация">
+      <button class="nb active" onclick="switchTab('library',this)" aria-current="page"><i class="ti ti-books" aria-hidden="true"></i> Кітапхана</button>
+      <button class="nb" onclick="switchTab('stories',this)"><i class="ti ti-list" aria-hidden="true"></i> Әңгімелер</button>
+      <button class="nb" onclick="switchTab('add',this)"><i class="ti ti-plus" aria-hidden="true"></i> Қосу</button>
+      <button class="nb" onclick="switchTab('teachers',this)"><i class="ti ti-school" aria-hidden="true"></i> Мұғалімдерге</button>
+      <button class="nb" onclick="switchTab('narrators',this)"><i class="ti ti-microphone" aria-hidden="true"></i> Дикторлар</button>
+      <button class="nb" onclick="switchTab('stats',this)"><i class="ti ti-chart-bar" aria-hidden="true"></i> Статистика</button>
+    </nav>
+
+    <!-- Accessibility quick controls -->
+    <div class="hdr-r" role="toolbar" aria-label="Қолжетімділік баптаулары">
+      <button class="acc-btn" id="btnBigText" onclick="toggleBigText()" title="Үлкен мәтін" aria-label="Үлкен мәтін режимі" aria-pressed="false">
+        <i class="ti ti-letter-a" aria-hidden="true"></i>A+
+      </button>
+      <button class="acc-btn" id="btnHC" onclick="toggleHC()" title="Жоғары контраст" aria-label="Жоғары контраст режимі" aria-pressed="false">
+        <i class="ti ti-contrast" aria-hidden="true"></i>HC
+      </button>
+      <button class="acc-btn" id="btnNight" onclick="toggleNight()" title="Түнгі режим" aria-label="Түнгі режим" aria-pressed="false">
+        <i class="ti ti-moon" aria-hidden="true"></i>🌙
+      </button>
+      <button class="acc-btn" id="btnVoice" onclick="toggleVoiceNav()" title="Дауыс навигациясы" aria-label="Дауыс командалары" aria-pressed="false">
+        <i class="ti ti-microphone" aria-hidden="true"></i>Дауыс
+      </button>
+      <div id="userArea"></div>
+    </div>
+  </div>
+</header>
+
+<main class="main" id="mainContent">
+
+<!-- ══════════════════ LIBRARY ══════════════════ -->
+<section id="tab-library" class="tab active" aria-label="Кітапхана">
+  <div class="hero">
+    <div class="hero-eyebrow" aria-hidden="true"><i class="ti ti-star-filled" style="font-size:11px;color:var(--gold);"></i> Тегін · Қазақша · Барлық балалар үшін</div>
+    <h1>Қазақ тілінде тыңдаңыз 🌙</h1>
+    <p>Ертегілер, фольклор, оқу әңгімелері. Дауыс навигациясы, аудио сипаттамалар және нақты уақытта мәтін бөлектеу — көру қабілеті нашар балаларға арналған.</p>
+    <div class="search-bar" role="search">
+      <label for="searchInput" style="position:absolute;left:-9999px;">Әңгіме іздеу</label>
+      <input id="searchInput" type="search" placeholder="Әңгіме іздеу..." aria-label="Әңгіме іздеу">
+      <button aria-label="Іздеу жүргізу"><i class="ti ti-search" aria-hidden="true"></i></button>
+    </div>
+  </div>
+
+  <!-- Voice Navigation Panel -->
+  <div class="vc-panel" aria-label="Дауыс навигациясы панелі">
+    <div class="vc-title"><i class="ti ti-microphone-2" aria-hidden="true"></i> Дауыс командалары</div>
+    <p class="vc-desc">Мына командаларды айтыңыз — платформа сізді тыңдайды. Браузер рұқсатын беруді ұмытпаңыз.</p>
+    <div class="vc-chips" aria-label="Қолжетімді командалар тізімі">
+      <div class="vc-chip"><i class="ti ti-player-play" aria-hidden="true"></i> «<span>Ойна</span>»</div>
+      <div class="vc-chip"><i class="ti ti-player-pause" aria-hidden="true"></i> «<span>Тоқта</span>»</div>
+      <div class="vc-chip"><i class="ti ti-arrow-right" aria-hidden="true"></i> «<span>Келесі</span>»</div>
+      <div class="vc-chip"><i class="ti ti-arrow-left" aria-hidden="true"></i> «<span>Алдыңғы</span>»</div>
+      <div class="vc-chip"><i class="ti ti-volume" aria-hidden="true"></i> «<span>Дауыс зор</span>»</div>
+      <div class="vc-chip"><i class="ti ti-volume-off" aria-hidden="true"></i> «<span>Дауыс аз</span>»</div>
+      <div class="vc-chip"><i class="ti ti-home" aria-hidden="true"></i> «<span>Басты бет</span>»</div>
+    </div>
+    <button class="big-mic-btn" id="vcBtn" onclick="toggleVoiceNav()" aria-label="Дауыс навигациясын қосу немесе өшіру" aria-pressed="false">
+      <i class="ti ti-microphone" aria-hidden="true"></i> Дауыс навигациясын қосу
+    </button>
+  </div>
+
+  <div class="toolbar" role="toolbar" aria-label="Оқу параметрлері">
+    <span class="tlbl" id="sizeLabel">Шрифт:</span>
+    <button class="mdb" onclick="changeSize(-1)" aria-label="Шрифтті кішірейту" style="font-size:13px;min-width:44px;">A−</button>
+    <button class="mdb" onclick="changeSize(1)" aria-label="Шрифтті үлкейту" style="font-size:18px;min-width:44px;">A+</button>
+    <div class="div1" aria-hidden="true"></div>
+    <button class="mdb active" id="mRead" onclick="setMode('read',this)" aria-pressed="true"><i class="ti ti-book" aria-hidden="true"></i> Оқу + тыңдау</button>
+    <button class="mdb" id="mListen" onclick="setMode('listen',this)" aria-pressed="false"><i class="ti ti-headphones" aria-hidden="true"></i> Тек тыңдау</button>
+  </div>
+
+  <div class="slbl">Санаттар</div>
+  <div class="cats" role="list" aria-label="Әңгіме санаттары">
+    <div class="cat active" role="listitem button" onclick="selCat(this)" tabindex="0" aria-pressed="true" aria-label="Ертегілер, 24 әңгіме"><div class="cico" aria-hidden="true">🌙</div><div class="cnm">Ертегілер</div><div class="cct">24 әңгіме</div></div>
+    <div class="cat" role="listitem button" onclick="selCat(this)" tabindex="0" aria-pressed="false" aria-label="Қазақ фольклоры, 18 әңгіме"><div class="cico" aria-hidden="true">🏇</div><div class="cnm">Қазақ фольклоры</div><div class="cct">18 әңгіме</div></div>
+    <div class="cat" role="listitem button" onclick="selCat(this)" tabindex="0" aria-pressed="false" aria-label="Оқу әңгімелері, 31 әңгіме"><div class="cico" aria-hidden="true">📚</div><div class="cnm">Оқу әңгімелері</div><div class="cct">31 әңгіме</div></div>
+    <div class="cat" role="listitem button" onclick="selCat(this)" tabindex="0" aria-pressed="false" aria-label="Балалар үшін, 15 әңгіме"><div class="cico" aria-hidden="true">🐪</div><div class="cnm">Балалар үшін</div><div class="cct">15 әңгіме</div></div>
+    <div class="cat" role="listitem button" onclick="selCat(this)" tabindex="0" aria-pressed="false" aria-label="Мектеп әдебиеті, 42 әңгіме"><div class="cico" aria-hidden="true">🏫</div><div class="cnm">Мектеп әдебиеті</div><div class="cct">42 әңгіме</div></div>
+  </div>
+
+  <div class="slbl">Таңдалған әңгімелер</div>
+
+  <!-- STORY 1 -->
+  <article class="scard" id="story-1" aria-label="Әңгіме: Даладағы кішкентай жұлдыз">
+    <!-- Audio description -->
+    <div class="desc-panel" role="note" aria-label="Иллюстрация сипаттамасы">
+      <strong>🖼 Иллюстрация сипаттамасы:</strong> Түнгі қазақ даласы. Аспанда алтын жұлдыз жарқырайды. Айан деген бала шалғында отыр, оның бетінде қайғы бар. Жұлдыз баяу төмен түсіп, жолды жарықтандырып тұр.
+    </div>
+    <div class="scard-hd">
+      <div class="smeta">
+        <span class="stag">Ертегі</span>
+        <span class="narbdg"><i class="ti ti-microphone" style="font-size:13px;" aria-hidden="true"></i> Айгүл Сейтқали, мұғалім</span>
+      </div>
+      <h2 class="stitle">Даладағы кішкентай жұлдыз</h2>
+      <p class="ssub">Шолпан жұлдызы мен Айан баланың достық ертегісі · 3–8 жас</p>
+    </div>
+    <div class="aplayer" aria-label="Аудио ойнатқыш">
+      <!-- Voice selection row -->
+      <div class="voice-sel-row">
+        <label for="voiceSel1">🎤 Дауыс:</label>
+        <select id="voiceSel1" class="voice-sel" aria-label="Дауыс таңдау" onchange="updateVoice(1)">
+          <option value="">Жүктелуде...</option>
+        </select>
+        <span class="voice-badge" id="voiceLang1">—</span>
+      </div>
+      <div class="prow">
+        <button class="big-play" id="pb1" onclick="toggleTTS(1)" aria-label="Бірінші әңгімені ойнату" aria-pressed="false">
+          <svg id="pi1" viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+        </button>
+        <div class="pbar-wrap">
+          <div class="pbar" id="pbar1" onclick="seekTTS(event,this,1)" role="slider" aria-label="Ойнату орны" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+            <div class="pfill" id="pf1" style="width:0%"></div>
+          </div>
+          <div class="pbar-labels">
+            <span id="td1" aria-live="off">0:00</span>
+            <span id="tdTotal1">—</span>
+          </div>
+        </div>
+      </div>
+      <div class="sprow">
+        <span class="tlbl">Жылдамдық:</span>
+        <button class="spb active" onclick="setRate(0.6,this,1)" aria-label="0.6 есе баяу">0.6×</button>
+        <button class="spb" onclick="setRate(0.75,this,1)" aria-label="0.75 есе баяу">0.75×</button>
+        <button class="spb" onclick="setRate(1,this,1)" aria-label="Қалыпты жылдамдық">1×</button>
+        <button class="spb" onclick="setRate(1.25,this,1)" aria-label="1.25 есе жылдам">1.25×</button>
+      </div>
+    </div>
+    <div class="sbody" id="sb1" aria-label="Әңгіме мәтіні"></div>
+  </article>
+
+  <!-- STORY 2 -->
+  <article class="scard" id="story-2" aria-label="Әңгіме: Ән сүйген бота">
+    <div class="desc-panel" role="note" aria-label="Иллюстрация сипаттамасы">
+      <strong>🖼 Иллюстрация сипаттамасы:</strong> Дала ортасында кішкентай бота тұр. Оның маңайында құстар ән салып, балалар биле­уде. Жас ботаның бетінде қуаныш.
+    </div>
+    <div class="scard-hd">
+      <div class="smeta">
+        <span class="stag stag-p">Балалар әңгімесі</span>
+        <span class="narbdg"><i class="ti ti-microphone" style="font-size:13px;" aria-hidden="true"></i> Берік Ахметов, студент</span>
+      </div>
+      <h2 class="stitle">Ән сүйген бота</h2>
+      <p class="ssub">Өзіндік таланты бар кішкентай ботаның ертегісі · 4–10 жас</p>
+    </div>
+    <div class="aplayer" aria-label="Аудио ойнатқыш">
+      <div class="voice-sel-row">
+        <label for="voiceSel2">🎤 Дауыс:</label>
+        <select id="voiceSel2" class="voice-sel" aria-label="Дауыс таңдау" onchange="updateVoice(2)">
+          <option value="">Жүктелуде...</option>
+        </select>
+        <span class="voice-badge" id="voiceLang2">—</span>
+      </div>
+      <div class="prow">
+        <button class="big-play" id="pb2" onclick="toggleTTS(2)" aria-label="Екінші әңгімені ойнату" aria-pressed="false">
+          <svg id="pi2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+        </button>
+        <div class="pbar-wrap">
+          <div class="pbar" id="pbar2" onclick="seekTTS(event,this,2)" role="slider" aria-label="Ойнату орны" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+            <div class="pfill" id="pf2" style="width:0%"></div>
+          </div>
+          <div class="pbar-labels">
+            <span id="td2" aria-live="off">0:00</span>
+            <span id="tdTotal2">—</span>
+          </div>
+        </div>
+      </div>
+      <div class="sprow">
+        <span class="tlbl">Жылдамдық:</span>
+        <button class="spb active" onclick="setRate(0.6,this,2)">0.6×</button>
+        <button class="spb" onclick="setRate(0.75,this,2)">0.75×</button>
+        <button class="spb" onclick="setRate(1,this,2)">1×</button>
+        <button class="spb" onclick="setRate(1.25,this,2)">1.25×</button>
+      </div>
+    </div>
+    <div class="sbody" id="sb2" aria-label="Әңгіме мәтіні"></div>
+  </article>
+
+  <div id="userStoriesLib"></div>
+</section>
+
+<!-- ══════════════════ STORIES ══════════════════ -->
+<section id="tab-stories" class="tab" aria-label="Барлық әңгімелер">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:10px;">
+    <h2 style="font-size:22px;font-weight:800;color:var(--navy);">Барлық әңгімелер</h2>
+    <button class="btn-gold" onclick="openAddStory()" aria-label="Өз әңгімеңізді қосу"><i class="ti ti-plus" aria-hidden="true"></i> Өз әңгімемді қосу</button>
+  </div>
+  <div class="slist" role="list">
+    <div class="sli" role="listitem" onclick="switchTab('library',document.querySelectorAll('.nb')[0])" tabindex="0" aria-label="Даладағы кішкентай жұлдыз — ойнату" onkeydown="if(event.key==='Enter')this.click()">
+      <div class="sthumb" style="background:var(--gold-pale);border:2px solid var(--gold);" aria-hidden="true">⭐</div>
+      <div style="flex:1"><div class="si-t">Даладағы кішкентай жұлдыз</div><div class="si-m">Ертегі · Айгүл Сейтқали · 🔊 TTS</div></div>
+      <i class="ti ti-player-play" style="color:var(--navy);font-size:18px;" aria-hidden="true"></i>
+    </div>
+    <div class="sli" role="listitem" onclick="switchTab('library',document.querySelectorAll('.nb')[0])" tabindex="0" aria-label="Ән сүйген бота — ойнату" onkeydown="if(event.key==='Enter')this.click()">
+      <div class="sthumb" style="background:var(--silver2);border:2px solid var(--silver);" aria-hidden="true">🐪</div>
+      <div style="flex:1"><div class="si-t">Ән сүйген бота</div><div class="si-m">Балалар әңгімесі · Берік Ахметов · 🔊 TTS</div></div>
+      <i class="ti ti-player-play" style="color:var(--navy);font-size:18px;" aria-hidden="true"></i>
+    </div>
+    <div class="sli" style="opacity:.5;cursor:default;" role="listitem" aria-label="Алатаудың аңызы — жақында" aria-disabled="true">
+      <div class="sthumb" style="background:var(--bg2);" aria-hidden="true">🏇</div>
+      <div style="flex:1"><div class="si-t">Алатаудың аңызы</div><div class="si-m">Қазақ фольклоры</div></div>
+      <span class="coming">Жақында</span>
+    </div>
+  </div>
+  <div id="userStoriesList" style="margin-top:8px;"></div>
+</section>
+
+<!-- ══════════════════ ADD STORY ══════════════════ -->
+<section id="tab-add" class="tab" aria-label="Әңгіме қосу">
+  <div style="margin-bottom:1.25rem;">
+    <h2 style="font-size:22px;font-weight:800;color:var(--navy);margin-bottom:5px;">Әңгіме қосу</h2>
+    <p style="font-size:var(--fs-body);color:var(--tx2);">Өз шығармаңызды қазақ балаларымен бөлісіңіз</p>
+  </div>
+  <div class="add-hero">
+    <div class="add-ico" aria-hidden="true">✍️</div>
+    <div style="flex:1;">
+      <div class="add-title">Авторларды іздейміз!</div>
+      <div class="add-desc">Ертегілер, фольклор, оқу әңгімелері — бәрін қабылдаймыз.</div>
+    </div>
+    <button class="btn-gold" onclick="openAddStory()" aria-label="Жаңа әңгіме қосу"><i class="ti ti-plus" aria-hidden="true"></i> Жаңа әңгіме</button>
+  </div>
+  <p class="slbl" id="myLbl" style="display:none;">Менің әңгімелерім</p>
+  <div id="myStories"></div>
+  <div style="background:var(--white);border:2px solid var(--bdr);border-radius:var(--rl);padding:1.5rem;box-shadow:var(--shadow);">
+    <h3 style="font-size:15px;font-weight:800;margin-bottom:.9rem;color:var(--navy);">Ережелер мен кеңестер</h3>
+    <ul style="font-size:var(--fs-body);color:var(--tx2);line-height:2.2;padding-left:1.3rem;">
+      <li>Мазмұн балаларға лайықты болуы керек</li>
+      <li>Қазақ тілінде жазылуы немесе аударылуы керек</li>
+      <li>Аудио: MP3 немесе WAV, максимум 50 МБ</li>
+      <li>Авторлық құқықты сақтаңыз</li>
+      <li>Тексеру 1–3 жұмыс күнін алады</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════ TEACHERS ══════════════════ -->
+<section id="tab-teachers" class="tab" aria-label="Мұғалімдерге арналған ресурстар">
+  <h2 style="font-size:22px;font-weight:800;color:var(--navy);margin-bottom:.4rem;">Мұғалімдер мен ата-аналарға</h2>
+  <p style="font-size:var(--fs-body);color:var(--tx2);margin-bottom:1.5rem;">Сыныпта және үйде пайдалануға арналған тегін ресурстар</p>
+  <div class="resgrid">
+    <div class="rcard"><div class="rico">📋</div><div class="rtit">Сабақ жоспарлары</div><div class="rdesc">Дайын жоспарлар мен тапсырмалар</div><button class="rlink" aria-label="Сабақ жоспарларын жүктеп алу"><i class="ti ti-download" aria-hidden="true"></i> Жүктеп алу</button></div>
+    <div class="rcard"><div class="rico">✏️</div><div class="rtit">Талқылау сұрақтары</div><div class="rdesc">Шығармашылық тапсырмалар</div><button class="rlink" aria-label="Талқылау сұрақтарын ашу"><i class="ti ti-file" aria-hidden="true"></i> Ашу</button></div>
+    <div class="rcard"><div class="rico">🖨️</div><div class="rtit">Баспа нұсқасы</div><div class="rdesc">Ірі шрифтпен сыныпқа арналған</div><button class="rlink" aria-label="Баспа нұсқасын ашу"><i class="ti ti-printer" aria-hidden="true"></i> Басып шығару</button></div>
+    <div class="rcard"><div class="rico">🎨</div><div class="rtit">Бояу беттері</div><div class="rdesc">Кішкентай оқырмандарға</div><button class="rlink" aria-label="Бояу беттерін жүктеп алу"><i class="ti ti-palette" aria-hidden="true"></i> Жүктеп алу</button></div>
+    <div class="rcard" style="border-color:var(--gold);background:var(--gold-pale);">
+      <div class="rico">♿</div><div class="rtit" style="color:var(--navy);">Қолжетімділік нұсқаулығы</div>
+      <div class="rdesc">Көру қабілеті нашар балалармен жұмыс жасауға арналған арнайы нұсқаулық</div>
+      <button class="rlink"><i class="ti ti-download" aria-hidden="true"></i> Жүктеп алу</button>
+    </div>
+    <div class="rcard">
+      <div class="rico">🔊</div><div class="rtit">Аудио нұсқаулық</div>
+      <div class="rdesc">Ата-аналарға арналған платформаны пайдалану дыбыстық нұсқаулығы</div>
+      <button class="rlink"><i class="ti ti-player-play" aria-hidden="true"></i> Тыңдау</button>
+    </div>
+  </div>
+  <div style="background:var(--bg2);border-radius:var(--rl);padding:1.25rem;">
+    <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:5px;">Пікір жіберу</h3>
+    <p style="font-size:var(--fs-sm);color:var(--tx2);margin-bottom:.9rem;">Платформаны жақсарту үшін ұсынысыңызды бізбен бөлісіңіз</p>
+    <label for="feedbackText" style="position:absolute;left:-9999px;">Пікір</label>
+    <textarea id="feedbackText" rows="3" placeholder="Ұсынысыңызды жазыңыз..." style="width:100%;font-family:var(--font);font-size:var(--fs-body);padding:11px 13px;border:2px solid var(--bdr2);border-radius:var(--r);background:var(--white);color:var(--tx);resize:vertical;outline:none;" aria-label="Пікір жазу өрісі"></textarea>
+    <button class="btn-navy" style="width:auto;margin-top:.9rem;padding:10px 22px;" aria-label="Пікір жіберу"><i class="ti ti-send" aria-hidden="true"></i> Жіберу</button>
+  </div>
+</section>
+
+<!-- ══════════════════ NARRATORS ══════════════════ -->
+<section id="tab-narrators" class="tab" aria-label="Диктор болу">
+  <h2 style="font-size:22px;font-weight:800;color:var(--navy);margin-bottom:1rem;">Диктор болыңыз</h2>
+  <div class="volbanner" role="complementary">
+    <div class="volico" aria-hidden="true"><i class="ti ti-microphone"></i></div>
+    <div class="vtxt"><div class="vt">Дыбысыңызды сыйлаңыз!</div><div class="vd">Студенттер, мұғалімдер, белгілі тұлғалар — бәрі қабылданады</div></div>
+    <button class="btn-vol" onclick="openAuth()" aria-label="Диктор болып тіркелу">Тіркелу →</button>
+  </div>
+  <div class="slbl">Қазіргі дикторлар</div>
+  <div class="narcard" role="article"><div class="av av-n" aria-label="Айгүл Сейтқалидің бастапқы әріптері">АС</div><div><div class="nname">Айгүл Сейтқали</div><div class="nmeta">Мұғалім, Алматы · 3 әңгіме жазып алды</div></div></div>
+  <div class="narcard" role="article"><div class="av av-g" aria-label="Берік Ахметовтың бастапқы әріптері">БА</div><div><div class="nname">Берік Ахметов</div><div class="nmeta">Студент, ҚазҰУ · 1 әңгіме жазып алды</div></div></div>
+  <div id="narratorCards"></div>
+  <div style="margin-top:1.25rem;background:var(--bg2);border-radius:var(--rl);padding:1.25rem 1.5rem;">
+    <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:10px;">Диктор болу үшін не істеу керек?</h3>
+    <ol style="font-size:var(--fs-body);color:var(--tx2);line-height:2.3;padding-left:1.3rem;">
+      <li>Тіркелу немесе кіру</li>
+      <li>Бір минуттық үлгі аудио жіберу</li>
+      <li>Команда тексеру жүргізеді (1–3 күн)</li>
+      <li>Жазып алу нұсқаулығын алу</li>
+      <li>Үйден немесе студиядан жазып алу</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════════════ STATS ══════════════════ -->
+<section id="tab-stats" class="tab" aria-label="Платформа статистикасы">
+  <div class="stats-hdr">
+    <h1>Платформа статистикасы <span class="live-badge" aria-label="Тікелей деректер"><span class="ldot" aria-hidden="true"></span> тікелей</span></h1>
+    <p style="font-size:var(--fs-sm);color:var(--tx2);">Деректер тіркелу мен сайтқа кіру кезінде автоматты жаңарады</p>
+  </div>
+  <div class="stat-grid" id="statGrid" aria-label="Статистика карточкалары"></div>
+  <div class="two-col">
+    <div class="chart-box"><div class="chart-tit">Санат бойынша әңгімелер</div><div id="catChart" aria-label="Санат диаграммасы"></div></div>
+    <div class="chart-box"><div class="chart-tit">Пайдаланушылар рөлі бойынша</div><div id="roleChart" aria-label="Рөл диаграммасы"></div></div>
+  </div>
+  <div class="chart-box"><div class="chart-tit">Соңғы белсенділік</div><div class="act-list" id="actList" aria-live="polite" aria-label="Белсенділік тізімі"></div></div>
+</section>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;">
+    <svg width="26" height="26" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+      <circle cx="40" cy="38" r="18" fill="#E8A820" opacity="0.85"/>
+      <polygon points="40,14 41.5,19 47,19 42.5,22 44,27 40,24 36,27 37.5,22 33,19 38.5,19" fill="#E8A820"/>
+      <path d="M8 52 Q40 44 72 52" stroke="white" stroke-width="2.5" fill="none"/>
+    </svg>
+    <span style="font-size:14px;font-weight:800;color:rgba(255,255,255,.7);letter-spacing:.04em;">LITTLE STAR <span style="color:#E8A820;">·</span> ЖҰЛДЫЗША</span>
+  </div>
+  <p>© 2024 Little Star Audiobooks · Қазақша оқу платформасы · Барлық мазмұн тегін · ♿ Қолжетімді дизайн</p>
+</footer>
+
+<script>
+// ══ STORAGE ══
+function gs(k,d){try{var v=localStorage.getItem(k);return v!==null?JSON.parse(v):d;}catch(e){return d;}}
+function ss(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+
+// ══ STORY DATA (sentences split for word highlighting) ══
+var STORIES={
+  1:{
+    sentences:[
+      "Ертеде шексіз қазақ даласының үстінде Шолпан атты кішкентай жұлдыз өмір сүріпті.",
+      "Ол әр түн сайын жарқырап тұрса да, жердегі өмірдің қандай екенін білгісі келетін.",
+      "Шіркін, бір күні далаға барып көрсем ғой, деп армандайтын ол.",
+      "Бір түні оның тілегін самал жел естіпті.",
+      "Егер жүрегің мейірімді болса, мен саған көмектесемін, дейді жел.",
+      "Сөйтіп, жел Шолпанды ақырын ғана жерге түсіреді.",
+      "Шолпан бір ауылдың маңына қонады.",
+      "Сол жерде Айан деген бала отыр екен. Оның көңілі жабырқау еді.",
+      "Неге мұңайып отырсың, деп сұрады Шолпан.",
+      "Ертең мерекеге гүлдерді әжеме жинауға көмектескім келеді. Бірақ қазір тым қараңғы, жолды көре алмаймын, деді Айан.",
+      "Онда мен саған көмектесейін, деді жұлдыз.",
+      "Шолпан аспанда қалықтап ұшып, жолды жарықтандырды.",
+      "Айан екеуі түрлі-түсті дала гүлдерін жинап шықты.",
+      "Олар үйге оралғанда, әжесі қатты қуанды.",
+      "Рақмет саған, кішкентай жұлдыз, деді ол.",
+      "Шолпанның жүрегі қуанышқа толды.",
+      "Таң ата ол қайтадан аспанға көтерілді.",
+      "Содан бері Айан әр кеш сайын аспанға қарағанда, ерекше жарқырап тұрған бір жұлдызды көретін болды.",
+      "Бұл оның досы Шолпан еді."
+    ],
+    moral:"Кішкентай жақсылықтың өзі біреуге үлкен көмек бола алады.",
+    highlights:{"Шолпан":true,"самал жел":true,"Айан":true}
+  },
+  2:{
+    sentences:[
+      "Бір ауылда Тұмар деген бота өмір сүріпті.",
+      "Басқа түйелер секілді жарысуды немесе жүк тасуды армандамайтын.",
+      "Ол музыканы жақсы көретін.",
+      "Ауылда домбыра үні естілсе болды, Тұмар бірден тыңдауға жүгіретін.",
+      "Бір күні ауылда үлкен өнер мерекесі өтетіні хабарланды.",
+      "Мен де қатысқым келеді, деді Тұмар.",
+      "Жануарлар күліп жіберді.",
+      "Ботаның қандай өнері болуы мүмкін?",
+      "Бірақ Тұмар мойымады.",
+      "Ол күн сайын тұяғымен жерді ақырын тарсылдатып жаттыға бастады.",
+      "Тарс-тұрс. Тарс-тұрс-тұрс.",
+      "Бірте-бірте оның ырғағы әдемі шыға бастады.",
+      "Фестиваль күні келді.",
+      "Тұмар сахнаға шыққанда жұрт таңырқай қарады.",
+      "Құстар ән салды. Балалар қол соқты. Музыканттар қосылды.",
+      "Бүкіл ауыл билеп кетті.",
+      "Сол күні ол маңызды бір нәрсені түсінді.",
+      "Өзгелерден ерекшелену кемшілік емес.",
+      "Кейде дәл сол ерекшелік сені ерекше етеді."
+    ],
+    moral:"Әр адамның өз таланты бар, оны дамыту керек.",
+    highlights:{"Тұмар":true,"музыканы":true}
+  }
+};
+
+// ══ TTS STATE ══
+var TTS={
+  1:{playing:false,rate:0.6,voice:null,idx:0,timer:null,elapsed:0,startT:0},
+  2:{playing:false,rate:0.6,voice:null,idx:0,timer:null,elapsed:0,startT:0}
+};
+var allVoices=[];
+var currentUser=null;
+var uploadedAudio=null;
+var voiceNavOn=false;
+var recognition=null;
+
+// ══ INIT ══
+function initApp(){
+  if(!gs('ls_init')){ss('ls_visits',1);ss('ls_users',[]);ss('ls_activity',[]);ss('ls_stories',[]);ss('ls_init',true);}
+  else{ss('ls_visits',(gs('ls_visits',0)||0)+1);}
+  addAct('Сайтқа кіруі тіркелді','gold');
+  renderUserArea();
+  renderStoryBodies();
+  loadVoices();
+  renderNarratorCards();
+  renderUserStoriesLib();
+  renderUserStoriesList();
+}
+
+// ══ RENDER STORY BODIES WITH SENTENCE SPANS ══
+function renderStoryBodies(){
+  [1,2].forEach(function(n){
+    var s=STORIES[n];
+    var html=s.sentences.map(function(sent,i){
+      var txt=sent;
+      // highlight key words
+      Object.keys(s.highlights).forEach(function(w){
+        txt=txt.replace(new RegExp(w,'g'),'<span class="hl">'+w+'</span>');
+      });
+      return '<p id="s'+n+'_'+i+'" data-idx="'+i+'" style="transition:background .2s;">'+txt+'</p>';
+    }).join('');
+    html+='<div class="moral"><i class="ti ti-bulb" style="color:var(--gold);flex-shrink:0;" aria-hidden="true"></i> Түйін: '+s.moral+'</div>';
+    document.getElementById('sb'+n).innerHTML=html;
+  });
+}
+
+// ══ VOICE LOADING — find Kazakh, Russian, or best available ══
+function loadVoices(){
+  function populate(){
+    allVoices=window.speechSynthesis.getVoices();
+    if(!allVoices.length)return;
+    [1,2].forEach(function(n){
+      var sel=document.getElementById('voiceSel'+n);
+      var badge=document.getElementById('voiceLang'+n);
+      sel.innerHTML='';
+      // Priority: kk (Kazakh) > ru (Russian) > tr (Turkish, similar) > any
+      var priority=['kk','ru','tr','uk','kz'];
+      var sorted=allVoices.slice().sort(function(a,b){
+        var ai=priority.findIndex(function(p){return a.lang.toLowerCase().startsWith(p);});
+        var bi=priority.findIndex(function(p){return b.lang.toLowerCase().startsWith(p);});
+        if(ai===-1)ai=99;if(bi===-1)bi=99;
+        return ai-bi;
+      });
+      sorted.forEach(function(v,i){
+        var opt=document.createElement('option');
+        opt.value=v.name;
+        var flag=v.lang.startsWith('kk')?'🇰🇿':v.lang.startsWith('ru')?'🇷🇺':v.lang.startsWith('tr')?'🇹🇷':'🌐';
+        opt.textContent=flag+' '+v.name+' ('+v.lang+')';
+        sel.appendChild(opt);
+      });
+      // Auto-select best
+      var best=sorted[0];
+      if(best){
+        TTS[n].voice=best;
+        var fl=best.lang.startsWith('kk')?'🇰🇿 Қазақша':best.lang.startsWith('ru')?'🇷🇺 Орысша':best.lang.startsWith('tr')?'🇹🇷 Түрікше':best.lang;
+        badge.textContent=fl;
+      }
+    });
+  }
+  if(window.speechSynthesis.getVoices().length){populate();}
+  window.speechSynthesis.onvoiceschanged=populate;
+}
+
+function updateVoice(n){
+  var name=document.getElementById('voiceSel'+n).value;
+  var v=allVoices.find(function(x){return x.name===name;});
+  if(v){
+    TTS[n].voice=v;
+    var badge=document.getElementById('voiceLang'+n);
+    var fl=v.lang.startsWith('kk')?'🇰🇿 Қазақша':v.lang.startsWith('ru')?'🇷🇺 Орысша':v.lang.startsWith('tr')?'🇹🇷 Түрікше':v.lang;
+    badge.textContent=fl;
+    announce('Дауыс өзгертілді: '+v.name);
+  }
+}
+
+// ══ TTS PLAYBACK — sentence by sentence ══
+function toggleTTS(n){
+  if(!window.speechSynthesis){alert('Браузеріңіз дауыс оқуды қолдамайды. Chrome немесе Edge пайдаланыңыз.');return;}
+  var s=TTS[n];
+  if(s.playing){
+    stopTTS(n);
+  } else {
+    // stop other
+    [1,2].forEach(function(i){if(i!==n)stopTTS(i);});
+    s.idx=0;s.elapsed=0;
+    playSentence(n);
+  }
+}
+
+function playSentence(n){
+  var s=TTS[n];
+  var story=STORIES[n];
+  var sentences=story.sentences;
+  if(s.idx>=sentences.length){
+    stopTTS(n);return;
+  }
+  // highlight current sentence
+  clearHighlights(n);
+  var el=document.getElementById('s'+n+'_'+s.idx);
+  if(el){
+    el.classList.add('sentence-active');
+    el.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  var utt=new SpeechSynthesisUtterance(sentences[s.idx]);
+  if(s.voice){utt.voice=s.voice;}
+  utt.lang=s.voice?s.voice.lang:'kk-KZ';
+  utt.rate=s.rate;
+  utt.onend=function(){
+    if(el)el.classList.remove('sentence-active');
+    s.idx++;
+    if(s.idx<sentences.length&&s.playing){
+      setTimeout(function(){playSentence(n);},120);
+    } else {
+      stopTTS(n);
+    }
+  };
+  utt.onerror=function(){s.idx++;if(s.playing)setTimeout(function(){playSentence(n);},100);};
+  window.speechSynthesis.speak(utt);
+  s.playing=true;
+  s.startT=Date.now();
+  document.getElementById('pi'+n).innerHTML='<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+  document.getElementById('pb'+n).setAttribute('aria-pressed','true');
+  document.getElementById('pb'+n).setAttribute('aria-label','Тоқтату');
+  // Progress timer
+  clearInterval(s.timer);
+  var totalSents=sentences.length;
+  s.timer=setInterval(function(){
+    var pct=Math.round((s.idx/totalSents)*100);
+    document.getElementById('pf'+n).style.width=pct+'%';
+    var sec=Math.round((Date.now()-s.startT+(s.idx/totalSents)*estimateDuration(n))/1000);
+    var est=Math.round(estimateDuration(n)/1000);
+    var m=Math.floor(sec/60),sc=sec%60,em=Math.floor(est/60),es=est%60;
+    document.getElementById('td'+n).textContent=m+':'+(sc<10?'0':'')+sc;
+    document.getElementById('tdTotal'+n).textContent=em+':'+(es<10?'0':'')+es;
+  },500);
+}
+
+function estimateDuration(n){
+  var total=STORIES[n].sentences.join(' ').length;
+  return total/12/TTS[n].rate*1000;
+}
+
+function stopTTS(n){
+  window.speechSynthesis.cancel();
+  var s=TTS[n];
+  s.playing=false;
+  clearInterval(s.timer);
+  clearHighlights(n);
+  document.getElementById('pi'+n).innerHTML='<polygon points="5,3 19,12 5,21"/>';
+  document.getElementById('pb'+n).setAttribute('aria-pressed','false');
+  document.getElementById('pb'+n).setAttribute('aria-label','Ойнату');
+  document.getElementById('pf'+n).style.width='0%';
+  document.getElementById('td'+n).textContent='0:00';
+}
+
+function clearHighlights(n){
+  STORIES[n].sentences.forEach(function(_,i){
+    var el=document.getElementById('s'+n+'_'+i);
+    if(el)el.classList.remove('sentence-active');
+  });
+}
+
+function seekTTS(e,el,n){
+  var r=el.getBoundingClientRect(),pct=Math.max(0,Math.min(100,Math.round((e.clientX-r.left)/r.width*100)));
+  var total=STORIES[n].sentences.length;
+  TTS[n].idx=Math.floor(pct/100*total);
+  if(TTS[n].playing){window.speechSynthesis.cancel();setTimeout(function(){playSentence(n);},50);}
+  document.getElementById('pf'+n).style.width=pct+'%';
+}
+
+function setRate(r,btn,n){
+  TTS[n].rate=r;
+  btn.closest('.sprow').querySelectorAll('.spb').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  announce('Жылдамдық: '+r+'×');
+  if(TTS[n].playing){window.speechSynthesis.cancel();setTimeout(function(){playSentence(n);},80);}
+}
+
+// ══ VOICE NAVIGATION ══
+function toggleVoiceNav(){
+  if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)){
+    alert('Браузеріңіз дауыс командасын қолдамайды. Chrome пайдаланыңыз.');return;
+  }
+  if(voiceNavOn){stopVoiceNav();return;}
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  recognition=new SR();
+  recognition.lang='kk-KZ';
+  recognition.interimResults=false;
+  recognition.continuous=true;
+  recognition.onresult=function(e){
+    var cmd=e.results[e.results.length-1][0].transcript.trim().toLowerCase();
+    handleVoiceCmd(cmd);
+  };
+  recognition.onerror=function(){stopVoiceNav();};
+  recognition.onend=function(){if(voiceNavOn)recognition.start();};
+  recognition.start();
+  voiceNavOn=true;
+  document.getElementById('voiceBar').classList.add('active');
+  document.getElementById('vcBtn').classList.add('listening');
+  document.getElementById('vcBtn').innerHTML='<i class="ti ti-microphone" aria-hidden="true"></i> Тыңдап тұрмын... (Өшіру)';
+  document.getElementById('btnVoice').classList.add('active');
+  announce('Дауыс командасы қосылды');
+}
+
+function stopVoiceNav(){
+  voiceNavOn=false;
+  if(recognition){recognition.stop();}
+  document.getElementById('voiceBar').classList.remove('active');
+  document.getElementById('vcBtn').classList.remove('listening');
+  document.getElementById('vcBtn').innerHTML='<i class="ti ti-microphone" aria-hidden="true"></i> Дауыс навигациясын қосу';
+  document.getElementById('btnVoice').classList.remove('active');
+  announce('Дауыс командасы өшірілді');
+}
+
+function handleVoiceCmd(cmd){
+  document.getElementById('voiceStatus').textContent='Команда: "'+cmd+'"';
+  if(cmd.includes('ойна')||cmd.includes('бастау')||cmd.includes('play')){
+    toggleTTS(1);announce('Бірінші әңгіме ойнатылуда');
+  } else if(cmd.includes('тоқта')||cmd.includes('стоп')||cmd.includes('stop')){
+    stopTTS(1);stopTTS(2);announce('Тоқтатылды');
+  } else if(cmd.includes('келесі')||cmd.includes('next')){
+    stopTTS(1);stopTTS(2);toggleTTS(2);announce('Екінші әңгіме');
+  } else if(cmd.includes('алдыңғы')||cmd.includes('back')){
+    stopTTS(2);toggleTTS(1);announce('Бірінші әңгіме');
+  } else if(cmd.includes('басты')||cmd.includes('кітапхана')){
+    switchTab('library',document.querySelectorAll('.nb')[0]);announce('Кітапхана ашылды');
+  } else if(cmd.includes('статистика')){
+    switchTab('stats',document.querySelectorAll('.nb')[5]);announce('Статистика ашылды');
+  }
+  setTimeout(function(){document.getElementById('voiceStatus').textContent='Дауыс командасын тыңдап тұрмын...';},2000);
+}
+
+// ══ ARIA ANNOUNCE ══
+function announce(msg){
+  var el=document.getElementById('liveRegion');
+  el.textContent='';
+  setTimeout(function(){el.textContent=msg;},50);
+}
+
+// ══ AUTH ══
+function openAuth(){document.getElementById('authOverlay').classList.remove('hidden');document.getElementById('lEmail').focus();}
+function closeAuth(){document.getElementById('authOverlay').classList.add('hidden');}
+document.getElementById('authOverlay').onclick=function(e){if(e.target===this)closeAuth();};
+document.getElementById('storyOverlay').onclick=function(e){if(e.target===this)this.classList.add('hidden');};
+function switchAuth(panel,btn,idx){
+  ['pLogin','pRegister'].forEach(function(id){document.getElementById(id).style.display='none';});
+  document.getElementById(panel).style.display='block';
+  document.querySelectorAll('.tsm').forEach(function(b){b.classList.remove('active');b.setAttribute('aria-selected','false');});
+  document.querySelectorAll('.tsm')[idx].classList.add('active');
+  document.querySelectorAll('.tsm')[idx].setAttribute('aria-selected','true');
+}
+function doRegister(){
+  var n=document.getElementById('rName').value.trim(),e=document.getElementById('rEmail').value.trim(),p=document.getElementById('rPass').value,r=document.getElementById('rRole').value;
+  var err=document.getElementById('rErr');
+  if(!n||!e||!p||p.length<6){err.textContent=(!n||!e)?'Барлық өрісті толтырыңыз':'Құпия сөз кем дегенде 6 таңба';err.style.display='block';announce(err.textContent);return;}
+  var users=gs('ls_users',[]);
+  if(users.find(function(u){return u.email===e;})){err.textContent='Бұл email тіркелген';err.style.display='block';announce(err.textContent);return;}
+  err.style.display='none';
+  var init=n.split(' ').map(function(w){return w[0]||'';}).join('').slice(0,2).toUpperCase();
+  users.push({name:n,email:e,pass:p,role:r,initials:init,joined:new Date().toISOString()});
+  ss('ls_users',users);
+  addAct(n+' тіркелді ('+rlbl(r)+')','navy');
+  switchAuth('pLogin',document.querySelectorAll('.tsm')[0],0);
+  document.getElementById('regOk').style.display='block';
+  announce('Тіркелу сәтті!');
+  document.getElementById('rName').value='';document.getElementById('rEmail').value='';document.getElementById('rPass').value='';
+  renderNarratorCards();
+}
+function doLogin(){
+  var e=document.getElementById('lEmail').value.trim(),p=document.getElementById('lPass').value;
+  var found=gs('ls_users',[]).find(function(u){return u.email===e&&u.pass===p;});
+  if(!found){document.getElementById('lErr').style.display='block';announce('Кіру сәтсіз. Email немесе құпия сөзді тексеріңіз.');return;}
+  document.getElementById('lErr').style.display='none';
+  currentUser=found;closeAuth();renderUserArea();
+  addAct(found.name+' кірді','gold');announce(found.name+' жүйеге кірді');
+  renderMyStories();
+}
+function doLogout(){if(currentUser)addAct(currentUser.name+' шықты','gray');currentUser=null;renderUserArea();renderMyStories();announce('Жүйеден шықтыңыз');}
+function renderUserArea(){
+  var a=document.getElementById('userArea');
+  if(currentUser){
+    a.innerHTML='<div class="upill" onclick="doLogout()" tabindex="0" role="button" aria-label="'+currentUser.name+' — шығу"><div class="uav">'+currentUser.initials+'</div>'+currentUser.name.split(' ')[0]+'</div>';
+  } else {
+    a.innerHTML='<button class="ibtn" onclick="openAuth()" aria-label="Кіру немесе тіркелу"><i class="ti ti-user" style="font-size:15px;" aria-hidden="true"></i> Кіру</button>';
+  }
+}
+function rlbl(r){return{reader:'Оқырман',student:'Студент',teacher:'Мұғалім',parent:'Ата-ана',narrator:'Диктор'}[r]||r;}
+
+// ══ STORY SUBMISSION ══
+var CAT_L={fairy:'Ертегілер',folklore:'Қазақ фольклоры',edu:'Оқу әңгімелері',kids:'Балалар үшін',school:'Мектеп әдебиеті'};
+var CAT_E={fairy:'🌙',folklore:'🏇',edu:'📚',kids:'🐪',school:'🏫'};
+function openAddStory(){
+  if(!currentUser){openAuth();announce('Әңгіме қосу үшін тіркеліңіз');return;}
+  document.getElementById('storyOk').style.display='none';
+  document.getElementById('storyOverlay').classList.remove('hidden');
+  document.getElementById('sTitle').focus();
+}
+function handleAudio(e){
+  var f=e.target.files[0];if(!f)return;
+  if(f.size>52428800){alert('Файл тым үлкен.');return;}
+  var r=new FileReader();
+  r.onload=function(ev){
+    uploadedAudio=ev.target.result;
+    document.getElementById('uploadedAudio').src=uploadedAudio;
+    document.getElementById('audPrev').style.display='flex';
+    document.getElementById('audioDrop').style.display='none';
+    announce('Аудио файл жүктелді');
+  };r.readAsDataURL(f);
+}
+function clearAudio(){uploadedAudio=null;document.getElementById('audioFile').value='';document.getElementById('audPrev').style.display='none';document.getElementById('audioDrop').style.display='block';}
+var dz=document.getElementById('audioDrop');
+dz.ondragover=function(e){e.preventDefault();dz.style.borderColor='var(--navy)';};
+dz.ondragleave=function(){dz.style.borderColor='';};
+dz.ondrop=function(e){e.preventDefault();dz.style.borderColor='';var f=e.dataTransfer.files[0];if(f&&f.type.startsWith('audio/'))handleAudio({target:{files:[f]}});};
+dz.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();document.getElementById('audioFile').click();}};
+function upCC(){var l=document.getElementById('sText').value.length;document.getElementById('charCount').textContent=l+' таңба';announce(l+' таңба теріліпті',true);}
+function submitStory(){
+  var title=document.getElementById('sTitle').value.trim(),text=document.getElementById('sText').value.trim(),cat=document.getElementById('sCat').value,age=document.getElementById('sAge').value,author=document.getElementById('sAuthor').value.trim()||currentUser.name,moral=document.getElementById('sMoral').value.trim();
+  if(!title||text.length<50){var msg=title?'Мәтін кем дегенде 50 таңба болуы керек':'Әңгіме атауын жазыңыз';alert(msg);announce(msg);return;}
+  var stories=gs('ls_stories',[]);
+  stories.push({id:Date.now(),title:title,text:text,cat:cat,age:age,author:author,moral:moral,audio:uploadedAudio,submittedBy:currentUser.email,submitted:new Date().toISOString()});
+  ss('ls_stories',stories);
+  addAct('"'+title+'" әңгімесі жүктелді','navy');
+  ['sTitle','sText','sAuthor','sMoral'].forEach(function(id){document.getElementById(id).value='';});
+  clearAudio();document.getElementById('charCount').textContent='0 таңба';
+  document.getElementById('storyOk').style.display='block';
+  announce('Әңгіме сәтті жүктелді!');
+  setTimeout(function(){document.getElementById('storyOverlay').classList.add('hidden');},1800);
+  renderMyStories();renderUserStoriesLib();renderUserStoriesList();
+}
+function renderMyStories(){
+  var c=document.getElementById('myStories'),l=document.getElementById('myLbl');
+  var stories=currentUser?gs('ls_stories',[]).filter(function(s){return s.submittedBy===currentUser.email;}):[];
+  if(!stories.length){c.innerHTML='';l.style.display='none';return;}
+  l.style.display='flex';
+  c.innerHTML='<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:1.25rem;">'+stories.map(function(s){
+    return '<div style="background:var(--white);border:2px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.2rem;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow);" role="article" aria-label="'+s.title+'">'+
+      '<div style="width:50px;height:50px;border-radius:var(--r);background:var(--gold-pale);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;" aria-hidden="true">'+CAT_E[s.cat]+'</div>'+
+      '<div style="flex:1;"><div style="font-size:15px;font-weight:700;color:var(--navy);">'+s.title+'<span class="usc-badge" role="status"><i class="ti ti-clock" style="font-size:10px;" aria-hidden="true"></i> Тексеруде</span></div>'+
+      '<div style="font-size:13px;color:var(--tx2);margin-top:3px;font-weight:500;">'+CAT_L[s.cat]+' · '+s.author+'</div></div></div>';
+  }).join('')+'</div>';
+}
+function renderUserStoriesLib(){
+  var el=document.getElementById('userStoriesLib');
+  var stories=gs('ls_stories',[]);if(!stories.length){el.innerHTML='';return;}
+  el.innerHTML='<div class="slbl" style="margin-top:.5rem;">Оқырман әңгімелері</div>'+stories.map(function(s){
+    var fullText=s.text.split(' ');
+    var sents=[];var cur=[];
+    fullText.forEach(function(w){cur.push(w);if(w.endsWith('.')||w.endsWith('!')||w.endsWith('?')){sents.push(cur.join(' '));cur=[];}});
+    if(cur.length)sents.push(cur.join(' '));
+    var sentHtml=sents.map(function(st,i){return '<p id="us'+s.id+'_'+i+'" style="margin-bottom:.8rem;transition:background .2s;">'+st+'</p>';}).join('');
+    return '<article class="scard" aria-label="Әңгіме: '+s.title+'">'+
+      '<div class="scard-hd"><div class="smeta"><span class="stag stag-p">'+CAT_L[s.cat]+'</span><span class="usc-badge" role="status"><i class="ti ti-clock" style="font-size:10px;" aria-hidden="true"></i> Тексеруде</span><span class="narbdg"><i class="ti ti-user" style="font-size:13px;" aria-hidden="true"></i> '+s.author+'</span></div>'+
+      '<h2 class="stitle">'+s.title+'</h2></div>'+
+      (s.audio?'<div class="aplayer"><div class="prow"><button class="big-play" onclick="playUA(\'ua'+s.id+'\',this)" aria-label="'+s.title+' аудиосын ойнату"><svg viewBox="0 0 24 24" style="fill:white;width:20px;height:20px;margin-left:2px;" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg></button><audio id="ua'+s.id+'" src="'+s.audio+'" style="display:none;" onended="resetUA(this)"></audio><div style="flex:1;font-size:13px;color:var(--tx2);font-weight:600;">Жүктелген аудио</div></div></div>':'')+
+      '<div class="sbody" style="font-size:var(--fs-body);">'+sentHtml+(s.moral?'<div class="moral"><i class="ti ti-bulb" style="color:var(--gold);flex-shrink:0;" aria-hidden="true"></i> Түйін: '+s.moral+'</div>':'')+
+      '</div></article>';
+  }).join('');
+}
+function playUA(id,btn){var a=document.getElementById(id);if(!a)return;if(a.paused){a.play();btn.querySelector('svg').innerHTML='<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';}else{a.pause();btn.querySelector('svg').innerHTML='<polygon points="5,3 19,12 5,21"/>';}}
+function resetUA(a){var b=a.parentElement.querySelector('.big-play');if(b)b.querySelector('svg').innerHTML='<polygon points="5,3 19,12 5,21"/>';}
+function renderUserStoriesList(){
+  var el=document.getElementById('userStoriesList');
+  var stories=gs('ls_stories',[]);if(!stories.length){el.innerHTML='';return;}
+  el.innerHTML=stories.map(function(s){
+    return '<div class="sli" onclick="switchTab(\'library\',document.querySelectorAll(\'.nb\')[0])" tabindex="0" role="button" aria-label="'+s.title+' — ойнату" onkeydown="if(event.key===\'Enter\')this.click()">'+
+      '<div class="sthumb" style="background:var(--gold-pale);border:2px solid var(--gold);" aria-hidden="true">'+CAT_E[s.cat]+'</div>'+
+      '<div style="flex:1;"><div class="si-t">'+s.title+'<span class="usc-badge"><i class="ti ti-clock" style="font-size:10px;" aria-hidden="true"></i> Тексеруде</span></div>'+
+      '<div class="si-m">'+CAT_L[s.cat]+' · '+s.author+'</div></div>'+
+      '<i class="ti ti-player-play" style="color:var(--navy);font-size:18px;" aria-hidden="true"></i></div>';
+  }).join('');
+}
+function renderNarratorCards(){
+  var el=document.getElementById('narratorCards');
+  var users=gs('ls_users',[]).filter(function(u){return u.role==='narrator';});
+  el.innerHTML=users.map(function(u){return '<div class="narcard" role="article"><div class="av av-g" aria-label="'+u.name+' бастапқы әріптері">'+u.initials+'</div><div><div class="nname">'+u.name+'</div><div class="nmeta">'+rlbl(u.role)+' · Жаңа тіркелді</div></div></div>';}).join('');
+}
+
+// ══ ACTIVITY ══
+function addAct(txt,col){
+  var a=gs('ls_activity',[]);
+  a.unshift({text:txt,color:col,time:new Date().toLocaleTimeString('kk-KZ',{hour:'2-digit',minute:'2-digit'})});
+  if(a.length>12)a=a.slice(0,12);ss('ls_activity',a);
+}
+
+// ══ STATS ══
+function renderStats(){
+  var users=gs('ls_users',[]),visits=gs('ls_visits',1),stories=gs('ls_stories',[]);
+  var sg=document.getElementById('statGrid');
+  var cards=[
+    {ico:'📖',val:130+stories.length,lbl:'Барлық әңгіме',ch:'+'+stories.length+' оқырман қосты',up:stories.length>0},
+    {ico:'👤',val:users.length,lbl:'Тіркелген пайдаланушылар',ch:users.length?'соңғысы жақында':'алғашқы болыңыз!',up:users.length>0},
+    {ico:'👁️',val:visits,lbl:'Сайтқа кіру',ch:'жалпы барлығы',up:false},
+    {ico:'🎙️',val:2+users.filter(function(u){return u.role==='narrator';}).length,lbl:'Белсенді дикторлар',ch:'+1 осы айда',up:true},
+    {ico:'🎧',val:2+stories.filter(function(s){return s.audio;}).length,lbl:'Аудио бар әңгімелер',ch:'жаңа аудио қосылды',up:stories.filter(function(s){return s.audio;}).length>0},
+    {ico:'♿',val:3,lbl:'Қолжетімділік мүмкіндіктері',ch:'Дауыс · Контраст · Шрифт',up:false},
+  ];
+  sg.innerHTML=cards.map(function(c){
+    return '<div class="stat-card" role="article"><div class="s-ico" aria-hidden="true">'+c.ico+'</div><div class="s-val">'+c.val.toLocaleString()+'</div>'+
+      '<div class="s-lbl">'+c.lbl+'</div>'+
+      '<div class="s-ch '+(c.up?'s-up':'s-neu')+'">'+(c.up?'<i class="ti ti-arrow-up" style="font-size:10px;" aria-hidden="true"></i>':'<i class="ti ti-minus" style="font-size:10px;" aria-hidden="true"></i>')+' '+c.ch+'</div></div>';
+  }).join('');
+  var cats=[{lbl:'Мектеп әдебиеті',n:42,c:'#1E2B6B'},{lbl:'Оқу әңгімелері',n:31,c:'#2A3A8A'},{lbl:'Ертегілер',n:24,c:'#E8A820'},{lbl:'Қазақ фольклоры',n:18,c:'#5568B8'},{lbl:'Балалар үшін',n:15,c:'#C8CDE0'}];
+  var maxC=42;
+  document.getElementById('catChart').innerHTML=cats.map(function(c){return '<div class="bar-row"><div class="bar-lbl">'+c.lbl+'</div><div class="bar-tr"><div class="bar-f" data-w="'+Math.round(c.n/maxC*100)+'" style="width:0%;background:'+c.c+'"></div></div><div class="bar-n">'+c.n+'</div></div>';}).join('');
+  var roles={reader:0,student:0,teacher:0,parent:0,narrator:0};
+  users.forEach(function(u){if(roles[u.role]!==undefined)roles[u.role]++;});
+  var rd=[{lbl:'Оқырман',n:roles.reader,c:'#1E2B6B'},{lbl:'Студент',n:roles.student,c:'#2A3A8A'},{lbl:'Мұғалім',n:roles.teacher,c:'#E8A820'},{lbl:'Ата-ана',n:roles.parent,c:'#5568B8'},{lbl:'Диктор',n:roles.narrator,c:'#C8CDE0'}];
+  var maxR=Math.max(1,Math.max.apply(null,rd.map(function(r){return r.n;})));
+  document.getElementById('roleChart').innerHTML=rd.map(function(c){return '<div class="bar-row"><div class="bar-lbl">'+c.lbl+'</div><div class="bar-tr"><div class="bar-f" data-w="'+Math.round(c.n/maxR*100)+'" style="width:0%;background:'+c.c+'"></div></div><div class="bar-n">'+c.n+'</div></div>';}).join('');
+  var acts=gs('ls_activity',[]);
+  var dc={gold:'var(--gold)',navy:'var(--navy)',gray:'var(--tx3)'};
+  document.getElementById('actList').innerHTML=acts.length?acts.map(function(a){return '<div class="act-row"><div class="adot" style="background:'+(dc[a.color]||'var(--gold)')+';" aria-hidden="true"></div><div class="atxt">'+a.text+'</div><div class="atime">'+a.time+'</div></div>';}).join(''):'<div style="font-size:14px;color:var(--tx3);padding:.5rem 0;">Белсенділік жоқ</div>';
+  setTimeout(function(){document.querySelectorAll('.bar-f[data-w]').forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});},80);
+}
+
+// ══ ACCESSIBILITY TOGGLES ══
+var fontSize=18;
+function changeSize(d){
+  fontSize=Math.min(24,Math.max(14,fontSize+d*2));
+  document.querySelectorAll('.sbody').forEach(function(el){el.style.fontSize=fontSize+'px';});
+  announce('Шрифт өлшемі: '+fontSize+'px');
+}
+function toggleBigText(){
+  document.body.classList.toggle('bigtext');
+  var on=document.body.classList.contains('bigtext');
+  document.getElementById('btnBigText').classList.toggle('active',on);
+  document.getElementById('btnBigText').setAttribute('aria-pressed',on);
+  announce(on?'Үлкен мәтін қосылды':'Үлкен мәтін өшірілді');
+}
+function toggleHC(){
+  document.body.classList.toggle('hc');
+  var on=document.body.classList.contains('hc');
+  document.getElementById('btnHC').classList.toggle('active',on);
+  document.getElementById('btnHC').setAttribute('aria-pressed',on);
+  announce(on?'Жоғары контраст қосылды':'Жоғары контраст өшірілді');
+}
+function toggleNight(){
+  document.body.classList.toggle('night');
+  var on=document.body.classList.contains('night');
+  document.getElementById('btnNight').classList.toggle('active',on);
+  document.getElementById('btnNight').setAttribute('aria-pressed',on);
+  announce(on?'Түнгі режим қосылды':'Күндізгі режим қосылды');
+}
+function setMode(m,btn){
+  document.getElementById('mRead').classList.remove('active');document.getElementById('mRead').setAttribute('aria-pressed','false');
+  document.getElementById('mListen').classList.remove('active');document.getElementById('mListen').setAttribute('aria-pressed','false');
+  btn.classList.add('active');btn.setAttribute('aria-pressed','true');
+  var d=m==='listen'?'none':'block';
+  document.querySelectorAll('.sbody').forEach(function(el){el.style.display=d;});
+  announce(m==='listen'?'Тек тыңдау режимі':'Оқу және тыңдау режимі');
+}
+function selCat(c){
+  document.querySelectorAll('.cat').forEach(function(x){x.classList.remove('active');x.setAttribute('aria-pressed','false');});
+  c.classList.add('active');c.setAttribute('aria-pressed','true');
+  var name=c.querySelector('.cnm').textContent;announce(name+' санаты таңдалды');
+}
+
+// ══ TAB SWITCHING ══
+function switchTab(id,btn){
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.nb').forEach(function(b){b.classList.remove('active');b.removeAttribute('aria-current');});
+  var p=document.getElementById('tab-'+id);if(p)p.classList.add('active');
+  if(btn){btn.classList.add('active');btn.setAttribute('aria-current','page');}
+  if(id==='stats')renderStats();
+  if(id==='add')renderMyStories();
+  window.scrollTo({top:0,behavior:'smooth'});
+  // announce tab change
+  var names={library:'Кітапхана',stories:'Әңгімелер',add:'Әңгіме қосу',teachers:'Мұғалімдерге',narrators:'Дикторлар',stats:'Статистика'};
+  announce(names[id]||id);
+}
+
+// ══ KEYBOARD: logo ══
+document.querySelector('.logo').addEventListener('keydown',function(e){if(e.key==='Enter')switchTab('library',document.querySelectorAll('.nb')[0]);});
+
+initApp();
+</script>
+</body>
+</html>
